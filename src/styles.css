@@ -19,6 +19,18 @@
  */
 
 @theme inline {
+  --font-display: "Zen Kaku Gothic New", "Segoe UI", system-ui, sans-serif;
+  --font-sans: "Inter Tight", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-wellness: var(--wellness);
+  --color-wellness-foreground: var(--wellness-foreground);
+  --color-wellness-soft: var(--wellness-soft);
+  --color-academic: var(--academic);
+  --color-academic-soft: var(--academic-soft);
+  --color-ink: var(--ink);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
