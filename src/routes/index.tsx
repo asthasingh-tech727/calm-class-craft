@@ -77,7 +77,10 @@ function Index() {
   };
 
   const doExport = (kind: "csv" | "json") => {
-    if (!schedule) return toast.error("Generate a timetable first");
+    if (!schedule) {
+      toast.error("Generate a timetable first");
+      return;
+    }
     if (kind === "csv") exportCsv(data, schedule);
     else exportJson(data, schedule);
     toast.success(`Exported ${kind.toUpperCase()}`);

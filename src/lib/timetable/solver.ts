@@ -250,8 +250,8 @@ export function validate(data: TimetableData, assignments: Assignment[]): Confli
   }
   for (const [k, arr] of seen) {
     if (arr.length < 2) continue;
-    const [kind, id, slot] = k.split("|");
-    const [d, p] = slot.split("-");
+    const [kind = "batch", id = "", slot = "0-0"] = k.split("|");
+    const [d = "0", p = "0"] = slot.split("-");
     const who =
       kind === "faculty" ? name(data.faculty, id) : kind === "room" ? name(data.rooms, id) : name(data.batches, id);
     conflicts.push({

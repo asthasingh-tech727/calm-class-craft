@@ -117,12 +117,12 @@ export function GeneratorForm({ data, setData }: Props) {
           <CardContent className="space-y-2">
             {data.batches.map((b, i) => (
               <div key={b.id} className="grid grid-cols-[minmax(0,1fr)_88px_auto] items-center gap-2">
-                <Input value={b.name} onChange={(e) => update((d) => (d.batches[i].name = e.target.value))} />
+                <Input value={b.name} onChange={(e) => update((d) => (d.batches[i]!.name = e.target.value))} />
                 <Input
                   type="number"
                   min={1}
                   value={b.strength}
-                  onChange={(e) => update((d) => (d.batches[i].strength = Number(e.target.value) || 0))}
+                  onChange={(e) => update((d) => (d.batches[i]!.strength = Number(e.target.value) || 0))}
                 />
                 <Button
                   size="icon"
@@ -160,16 +160,16 @@ export function GeneratorForm({ data, setData }: Props) {
           <CardContent className="space-y-2">
             {data.rooms.map((r, i) => (
               <div key={r.id} className="grid grid-cols-[minmax(0,1fr)_80px_130px_auto] items-center gap-2">
-                <Input value={r.name} onChange={(e) => update((d) => (d.rooms[i].name = e.target.value))} />
+                <Input value={r.name} onChange={(e) => update((d) => (d.rooms[i]!.name = e.target.value))} />
                 <Input
                   type="number"
                   min={1}
                   value={r.capacity}
-                  onChange={(e) => update((d) => (d.rooms[i].capacity = Number(e.target.value) || 0))}
+                  onChange={(e) => update((d) => (d.rooms[i]!.capacity = Number(e.target.value) || 0))}
                 />
                 <Select
                   value={r.type}
-                  onValueChange={(v) => update((d) => (d.rooms[i].type = v as "classroom" | "lab"))}
+                  onValueChange={(v) => update((d) => (d.rooms[i]!.type = v as "classroom" | "lab"))}
                 >
                   <SelectTrigger>
                     <SelectValue />
@@ -215,16 +215,16 @@ export function GeneratorForm({ data, setData }: Props) {
         <CardContent className="space-y-2">
           {data.faculty.map((f, i) => (
             <div key={f.id} className="grid gap-2 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)_90px_auto_auto] md:items-center">
-              <Input value={f.name} onChange={(e) => update((d) => (d.faculty[i].name = e.target.value))} />
+              <Input value={f.name} onChange={(e) => update((d) => (d.faculty[i]!.name = e.target.value))} />
               <Input
                 value={f.department}
-                onChange={(e) => update((d) => (d.faculty[i].department = e.target.value))}
+                onChange={(e) => update((d) => (d.faculty[i]!.department = e.target.value))}
               />
               <Input
                 type="number"
                 min={1}
                 value={f.maxWeeklyLoad}
-                onChange={(e) => update((d) => (d.faculty[i].maxWeeklyLoad = Number(e.target.value) || 0))}
+                onChange={(e) => update((d) => (d.faculty[i]!.maxWeeklyLoad = Number(e.target.value) || 0))}
               />
               <Popover>
                 <PopoverTrigger asChild>
@@ -262,8 +262,8 @@ export function GeneratorForm({ data, setData }: Props) {
                               aria-label={`${day} period ${pi + 1}`}
                               onClick={() =>
                                 update((d) => {
-                                  const list = d.faculty[i].unavailable;
-                                  d.faculty[i].unavailable = list.includes(k)
+                                  const list = d.faculty[i]!.unavailable;
+                                  d.faculty[i]!.unavailable = list.includes(k)
                                     ? list.filter((x) => x !== k)
                                     : [...list, k];
                                 })
@@ -318,8 +318,8 @@ export function GeneratorForm({ data, setData }: Props) {
                   id: uid("s"),
                   code: "NEW101",
                   name: "New Subject",
-                  batchId: d.batches[0].id,
-                  facultyId: d.faculty[0].id,
+                  batchId: d.batches[0]!.id,
+                  facultyId: d.faculty[0]!.id,
                   weeklyHours: 3,
                   type: "lecture",
                 }),
@@ -338,10 +338,10 @@ export function GeneratorForm({ data, setData }: Props) {
               <Input
                 value={s.code}
                 className="font-mono text-xs"
-                onChange={(e) => update((d) => (d.subjects[i].code = e.target.value))}
+                onChange={(e) => update((d) => (d.subjects[i]!.code = e.target.value))}
               />
-              <Input value={s.name} onChange={(e) => update((d) => (d.subjects[i].name = e.target.value))} />
-              <Select value={s.batchId} onValueChange={(v) => update((d) => (d.subjects[i].batchId = v))}>
+              <Input value={s.name} onChange={(e) => update((d) => (d.subjects[i]!.name = e.target.value))} />
+              <Select value={s.batchId} onValueChange={(v) => update((d) => (d.subjects[i]!.batchId = v))}>
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
@@ -353,7 +353,7 @@ export function GeneratorForm({ data, setData }: Props) {
                   ))}
                 </SelectContent>
               </Select>
-              <Select value={s.facultyId} onValueChange={(v) => update((d) => (d.subjects[i].facultyId = v))}>
+              <Select value={s.facultyId} onValueChange={(v) => update((d) => (d.subjects[i]!.facultyId = v))}>
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
@@ -365,7 +365,7 @@ export function GeneratorForm({ data, setData }: Props) {
                   ))}
                 </SelectContent>
               </Select>
-              <Select value={s.type} onValueChange={(v) => update((d) => (d.subjects[i].type = v as SubjectType))}>
+              <Select value={s.type} onValueChange={(v) => update((d) => (d.subjects[i]!.type = v as SubjectType))}>
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
@@ -380,7 +380,7 @@ export function GeneratorForm({ data, setData }: Props) {
                 min={0}
                 max={12}
                 value={s.weeklyHours}
-                onChange={(e) => update((d) => (d.subjects[i].weeklyHours = Number(e.target.value) || 0))}
+                onChange={(e) => update((d) => (d.subjects[i]!.weeklyHours = Number(e.target.value) || 0))}
               />
               <Button
                 size="icon"
