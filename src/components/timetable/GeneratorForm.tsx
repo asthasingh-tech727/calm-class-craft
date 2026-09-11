@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import type { SubjectType, TimetableData } from "@/lib/timetable/types";
 import { DAYS, PERIOD_COUNT, slotKey } from "@/lib/timetable/types";
 import { CalendarClock, Plus, Trash2 } from "lucide-react";
+import { Fragment } from "react";
 
 interface Props {
   data: TimetableData;
@@ -247,8 +248,8 @@ export function GeneratorForm({ data, setData }: Props) {
                       </span>
                     ))}
                     {DAYS.map((day, di) => (
-                      <>
-                        <span key={day} className="pr-1 text-[10px] text-muted-foreground">
+                      <Fragment key={day}>
+                        <span className="pr-1 text-[10px] text-muted-foreground">
                           {day.slice(0, 3)}
                         </span>
                         {Array.from({ length: PERIOD_COUNT }, (_, pi) => {
@@ -277,7 +278,7 @@ export function GeneratorForm({ data, setData }: Props) {
                             </button>
                           );
                         })}
-                      </>
+                      </Fragment>
                     ))}
                   </div>
                 </PopoverContent>
