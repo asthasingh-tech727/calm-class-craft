@@ -12,6 +12,7 @@ import { ConflictPanel } from "@/components/timetable/ConflictPanel";
 import { AnalyticsPanel } from "@/components/timetable/AnalyticsPanel";
 import { ProposalPanel } from "@/components/timetable/ProposalPanel";
 import { ScheduleGrid, type ViewMode } from "@/components/timetable/ScheduleGrid";
+import { SavedPanel } from "@/components/timetable/SavedPanel";
 import { computeMetrics } from "@/lib/timetable/analytics";
 import { exportCsv, exportJson, printSummary } from "@/lib/timetable/exporters";
 import { solve, validate } from "@/lib/timetable/solver";
@@ -168,6 +169,7 @@ function Index() {
             <TabsTrigger value="views">Schedule Views</TabsTrigger>
             <TabsTrigger value="conflicts">Conflicts</TabsTrigger>
             <TabsTrigger value="analytics">Analytics</TabsTrigger>
+            <TabsTrigger value="saved">Saved</TabsTrigger>
             <TabsTrigger value="proposal">Proposal</TabsTrigger>
           </TabsList>
 
@@ -248,6 +250,18 @@ function Index() {
 
           <TabsContent value="analytics">
             <AnalyticsPanel metrics={metrics} data={data} schedule={schedule} />
+          </TabsContent>
+
+          <TabsContent value="saved">
+            <SavedPanel
+              data={data}
+              schedule={schedule}
+              onLoad={(loadedData, loadedSchedule) => {
+                setData(loadedData);
+                setSchedule(loadedSchedule);
+                setResult(null);
+              }}
+            />
           </TabsContent>
 
           <TabsContent value="proposal">
