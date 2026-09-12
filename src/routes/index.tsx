@@ -169,6 +169,7 @@ function Index() {
             <TabsTrigger value="views">Schedule Views</TabsTrigger>
             <TabsTrigger value="conflicts">Conflicts</TabsTrigger>
             <TabsTrigger value="analytics">Analytics</TabsTrigger>
+            <TabsTrigger value="saved">Saved</TabsTrigger>
             <TabsTrigger value="proposal">Proposal</TabsTrigger>
           </TabsList>
 
