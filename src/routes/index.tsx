@@ -252,6 +252,18 @@ function Index() {
             <AnalyticsPanel metrics={metrics} data={data} schedule={schedule} />
           </TabsContent>
 
+          <TabsContent value="saved">
+            <SavedPanel
+              data={data}
+              schedule={schedule}
+              onLoad={(loadedData, loadedSchedule) => {
+                setData(loadedData);
+                setSchedule(loadedSchedule);
+                setResult(null);
+              }}
+            />
+          </TabsContent>
+
           <TabsContent value="proposal">
             <ProposalPanel />
           </TabsContent>
