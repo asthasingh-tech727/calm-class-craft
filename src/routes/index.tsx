@@ -12,6 +12,7 @@ import { ConflictPanel } from "@/components/timetable/ConflictPanel";
 import { AnalyticsPanel } from "@/components/timetable/AnalyticsPanel";
 import { ProposalPanel } from "@/components/timetable/ProposalPanel";
 import { ScheduleGrid, type ViewMode } from "@/components/timetable/ScheduleGrid";
+import { SavedPanel } from "@/components/timetable/SavedPanel";
 import { computeMetrics } from "@/lib/timetable/analytics";
 import { exportCsv, exportJson, printSummary } from "@/lib/timetable/exporters";
 import { solve, validate } from "@/lib/timetable/solver";
